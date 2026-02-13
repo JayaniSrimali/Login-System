@@ -215,7 +215,7 @@ h6 {
     max-width: 1400px;
     width: 100%;
     background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4));
-    border-radius: var(--radius-sm);
+    border-radius: var(--radius-lg);
     overflow: hidden;
     box-shadow: var(--shadow-xl);
     min-height: 700px;
@@ -1040,4 +1040,31 @@ h6 {
     .section-title {
         font-size: 2rem;
     }
+}/* Terms Checkbox */
+.terms-checkbox {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: flex-start;
+    /* Align left */
+    width: 100%;
+    margin-top: -10px;
+    /* Pull it a bit closer to inputs if needed, or leave as is */
+}
+
+.terms-checkbox input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    accent-color: var(--green-primary);
+    cursor: pointer;
+}
+
+.terms-checkbox label {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.8);
+    cursor: pointer;
+}
+
+.terms-checkbox label:hover {
+    color: var(--white);
 }

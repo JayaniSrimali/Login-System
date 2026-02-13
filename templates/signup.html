@@ -18,7 +18,7 @@
         <div class="auth-right">
             <div class="auth-form-container">
                 <h2 class="auth-title">SIGN UP</h2>
-                <p class="auth-subtitle">Hi Welcome! Please login to continue</p>
+                <p class="auth-subtitle">Hi Welcome! Please Sign Up to continue</p>
 
                 <form method="POST" action="{{ url_for('signup') }}" class="auth-form">
                     {{ form.hidden_tag() }}
@@ -100,9 +100,13 @@
                         {% endif %}
                     </div>
 
-                    <button type="submit" class="btn btn-primary btn-full">SIGN UP</button>
 
-                    <p class="terms-text">Accept Terms & Conditions.</p>
+                    <div class="terms-checkbox">
+                        <input type="checkbox" id="terms" name="terms" required>
+                        <label for="terms">Accept Terms & Conditions.</label>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-full">SIGN UP</button>
 
                     <div class="divider">
                         <span>Login with Others</span>
