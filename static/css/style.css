@@ -77,7 +77,6 @@ body {
     font-weight: 400;
     line-height: 1.6;
     color: var(--white);
-    background: var(--cream);
     overflow-x: hidden;
 }
 
@@ -407,6 +406,19 @@ h6 {
     background: transparent;
     color: var(--white);
     border: 2px solid var(--white);
+    padding: 10px 18px;
+    border-radius: 16px;
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--transition-base);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    text-decoration: none;
+    outline: none;
 }
 
 .btn-outline:hover {
@@ -544,8 +556,8 @@ h6 {
 
 /* Navbar */
 .navbar {
-    background: var(--green-dark);
-    padding: 16px 0;
+    background: #0E3F23;
+    padding: 10px 0;
     box-shadow: var(--shadow-md);
     position: sticky;
     top: 0;
@@ -643,7 +655,7 @@ h6 {
 /* Hero Section */
 .hero {
     padding: 80px 0;
-    background: linear-gradient(135deg, var(--cream) 0%, var(--cream-dark) 100%);
+    background: url("/flask-plant-login/static/Images/Home_bacground.jpg");
 }
 
 .hero-content {
@@ -654,10 +666,10 @@ h6 {
 }
 
 .hero-title {
-    font-size: 3.5rem;
-    color: var(--gray-900);
+    font-size: 2rem;
+    color: var(--black);
     margin-bottom: 24px;
-    line-height: 1.15;
+    line-height: 1;
 }
 
 .hero-description {
@@ -676,8 +688,8 @@ h6 {
 
 /* Features Section */
 .features {
-    padding: 80px 0;
-    background: var(--white);
+    padding: 10px 0;
+    background: #0E3F23;
 }
 
 .features-grid {
@@ -690,7 +702,6 @@ h6 {
     text-align: center;
     padding: 32px 20px;
     border-radius: var(--radius-lg);
-    background: var(--cream);
     transition: all var(--transition-base);
 }
 
@@ -706,26 +717,24 @@ h6 {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: var(--green-primary);
-    color: var(--white);
-    border-radius: 50%;
+
 }
 
 .feature-title {
     font-size: 1.1rem;
     margin-bottom: 8px;
-    color: var(--gray-900);
+    color: var(--white);
 }
 
 .feature-text {
     font-size: 0.9rem;
-    color: var(--gray-600);
+    color: var(--white);
 }
 
 /* About Section */
 .about {
     padding: 80px 0;
-    background: var(--cream);
+    background: white;
 }
 
 .about-content {
@@ -817,13 +826,13 @@ h6 {
 /* Newsletter Section */
 .newsletter {
     padding: 80px 0;
-    background: var(--green-dark);
+    background: #F6F3F3;
     color: var(--white);
 }
 
 .newsletter-content {
     display: grid;
-    grid-template-columns: 1.5fr 1fr;
+    grid-template-columns: 1fr 1fr;
     gap: 60px;
     align-items: center;
     margin-bottom: 40px;
@@ -832,12 +841,15 @@ h6 {
 .newsletter-title {
     font-size: 2rem;
     margin-bottom: 16px;
+    color: black;
 }
 
 .newsletter-description {
     font-size: 1rem;
     line-height: 1.7;
     opacity: 0.9;
+    color: black;
+
 }
 
 .newsletter-image img {
@@ -851,28 +863,27 @@ h6 {
     display: flex;
     gap: 12px;
     max-width: 600px;
-    margin: 0 auto;
+    margin-top: 24px;
 }
 
 .newsletter-input {
     flex: 1;
     padding: 16px 24px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 50px;
+    border-radius: 8px;
     background: rgba(255, 255, 255, 0.1);
-    color: var(--white);
+    color: black;
     font-size: 0.95rem;
     outline: none;
 }
 
 .newsletter-input::placeholder {
-    color: rgba(255, 255, 255, 0.6);
+    color: rgba(8, 8, 8, 0.6);
 }
 
 /* Footer */
 .footer {
     padding: 60px 0 30px;
-    background: var(--gray-900);
+    background: #0E3F23;
     color: var(--white);
 }
 
@@ -1160,6 +1171,38 @@ h6 {
 
 .forgot-password-right .btn-primary:hover {
     background: #1A5D44;
+}
+
+.set-password-right {
+    padding: 60px 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: #151515;
+    color: var(--white);
+}
+
+.set-password-left {
+    background: url('../Images/Paawordset.jpg') no-repeat center center;
+    background-size: cover;
+    position: relative;
+}
+
+.otp-verification-right {
+    padding: 60px 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: #151515;
+    color: var(--white);
+}
+
+.otp-verification-left {
+    background: url('../Images/Monstera\ Swiss\ Cheese\ Plant\ -\ 3\ -\ 4\ feet.jpg') no-repeat center center;
+    background-size: cover;
+    position: relative;
 }
 
 /* Responsive */
