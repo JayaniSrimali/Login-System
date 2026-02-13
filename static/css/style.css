@@ -76,7 +76,7 @@ body {
     font-family: var(--font-body);
     font-weight: 400;
     line-height: 1.6;
-    color: var(--gray-900);
+    color: var(--white);
     background: var(--cream);
     overflow-x: hidden;
 }
@@ -93,11 +93,12 @@ h6 {
     font-family: var(--font-display);
     font-weight: 700;
     line-height: 1.2;
-    color: var(--gray-900);
+    color: var(--white);
 }
 
 h1 {
     font-size: 3rem;
+    margin-bottom: 8px;
 }
 
 h2 {
@@ -202,7 +203,9 @@ h6 {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: var(--cream);
+    background:
+        url('../Images/Backgrounds.jpg') no-repeat center center;
+    background-size: cover;
     padding: 40px 20px;
 }
 
@@ -211,8 +214,8 @@ h6 {
     grid-template-columns: 1fr 1fr;
     max-width: 1400px;
     width: 100%;
-    background: var(--white);
-    border-radius: var(--radius-xl);
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4));
+    border-radius: var(--radius-sm);
     overflow: hidden;
     box-shadow: var(--shadow-xl);
     min-height: 700px;
@@ -232,11 +235,10 @@ h6 {
 
 /* Auth Left Side */
 .auth-left {
-    background: linear-gradient(135deg, rgba(45, 95, 63, 0.95) 0%, rgba(26, 58, 40, 0.95) 100%),
-        url('https://images.unsplash.com/photo-1501004318641-b39e6451bec6?w=1000&q=80');
+    background: linear-gradient(90deg, #1A1818 0%, rgba(20, 12, 12, 0.53) 100%);
     background-size: cover;
     background-position: center;
-    padding: 60px;
+    padding: 30px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -244,59 +246,17 @@ h6 {
 }
 
 .auth-left::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(circle at 30% 40%, rgba(74, 143, 99, 0.3) 0%, transparent 60%);
-    pointer-events: none;
-}
-
-.auth-left-content {
-    position: relative;
-    z-index: 1;
-}
-
-.auth-brand {
-    font-size: 3.5rem;
-    font-weight: 800;
-    color: var(--white);
-    margin-bottom: 24px;
-    line-height: 1.1;
-    text-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-}
-
-.auth-tagline {
-    font-size: 1.1rem;
-    color: rgba(255, 255, 255, 0.95);
-    line-height: 1.8;
-    font-weight: 300;
-    max-width: 480px;
-}
-
-/* Auth Image Left */
-.auth-image-left {
-    background: var(--cream);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 40px;
-}
-
-.auth-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: var(--radius-lg);
-    box-shadow: var(--shadow-md);
+    display: none;
 }
 
 /* Auth Right Side */
 .auth-right {
-    padding: 60px;
+    padding: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: var(--black);
+    background: #151515;
+    /* Matching the dark background from the image */
 }
 
 .auth-right-compact {
@@ -304,7 +264,7 @@ h6 {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: var(--black);
+    background: #151515;
 }
 
 .auth-form-container {
@@ -319,12 +279,14 @@ h6 {
     margin-bottom: 8px;
     letter-spacing: 2px;
     font-family: var(--font-body);
+    text-align: center;
 }
 
 .auth-subtitle {
     color: rgba(255, 255, 255, 0.7);
     margin-bottom: 32px;
     font-size: 0.95rem;
+    text-align: center;
 }
 
 .auth-subtitle-small {
@@ -357,33 +319,35 @@ h6 {
 
 .input-icon {
     position: absolute;
-    left: 16px;
-    color: var(--gray-600);
+    left: 20px;
+    color: #1A1A1A;
     pointer-events: none;
-    opacity: 0.6;
+    opacity: 0.7;
+    z-index: 10;
 }
 
 .form-input {
     width: 100%;
-    padding: 14px 16px 14px 48px;
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    border-radius: var(--radius-md);
-    background: rgba(255, 255, 255, 0.08);
-    color: var(--white);
+    padding: 12px 12px 12px 52px;
+    border: none;
+    border-radius: 12px;
+    background: #F0EDFF;
+    color: #1A1A1A;
     font-size: 0.95rem;
     font-family: var(--font-body);
     transition: all var(--transition-base);
     outline: none;
+    font-weight: 500;
 }
 
 .form-input::placeholder {
-    color: rgba(255, 255, 255, 0.5);
+    color: rgba(26, 26, 26, 0.6);
+    font-size: 0.9rem;
 }
 
 .form-input:focus {
-    border-color: var(--green-accent);
-    background: rgba(255, 255, 255, 0.12);
-    box-shadow: 0 0 0 3px rgba(74, 143, 99, 0.15);
+    background: #E0E0E0;
+    box-shadow: 0 0 0 3px rgba(74, 143, 99, 0.2);
 }
 
 .field-errors {
@@ -401,9 +365,9 @@ h6 {
    Buttons
    ==================================== */
 .btn {
-    padding: 14px 28px;
+    padding: 16px 24px;
     border: none;
-    border-radius: var(--radius-md);
+    border-radius: 8px;
     font-family: var(--font-body);
     font-size: 0.95rem;
     font-weight: 600;
@@ -418,19 +382,14 @@ h6 {
 }
 
 .btn-primary {
-    background: var(--green-primary);
+    background: #0E3F23;
     color: var(--white);
-    box-shadow: 0 4px 12px rgba(45, 95, 63, 0.3);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
 .btn-primary:hover {
-    background: var(--green-dark);
+    background: #1A5D44;
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(45, 95, 63, 0.4);
-}
-
-.btn-primary:active {
-    transform: translateY(0);
 }
 
 .btn-secondary {
@@ -456,15 +415,17 @@ h6 {
 }
 
 .btn-social {
-    background: rgba(255, 255, 255, 0.08);
-    color: var(--white);
-    border: 1px solid rgba(255, 255, 255, 0.15);
+    background: var(--white);
+    color: var(--black);
+    border: none;
     flex: 1;
+    border-radius: 8px;
+    font-weight: 600;
+    padding: 12px;
 }
 
 .btn-social:hover {
-    background: rgba(255, 255, 255, 0.15);
-    border-color: rgba(255, 255, 255, 0.25);
+    background: #F0F0F0;
 }
 
 .btn-full {
@@ -483,7 +444,7 @@ h6 {
     color: var(--green-accent);
     text-decoration: none;
     font-size: 0.9rem;
-    text-align: right;
+    text-align: left;
     transition: color var(--transition-fast);
 }
 
@@ -496,7 +457,7 @@ h6 {
     display: flex;
     align-items: center;
     gap: 16px;
-    margin: 24px 0;
+    margin: 14spx 0;
     color: rgba(255, 255, 255, 0.5);
     font-size: 0.9rem;
 }

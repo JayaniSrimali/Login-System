@@ -187,9 +187,10 @@ def auth_google():
         flash('Google OAuth is not configured. Please add GOOGLE_CLIENT_ID and GOOGLE_CLIENT_SECRET to environment variables.', 'error')
         return redirect(url_for('login'))
     
-    # Force use of http://127.0.0.1:5000 for local dev to match Google Console default
-    redirect_uri = url_for('auth_google_callback', _external=True).replace('localhost', '127.0.0.1')
+    # redirect_uri = url_for('auth_google_callback', _external=True).replace('localhost', '127.0.0.1')
+    redirect_uri = url_for('auth_google_callback', _external=True)
     print(f"DEBUG: Using Redirect URI: {redirect_uri}")
+    print(f"IMPORTANT: Ensure this URI is added to your Google Cloud Console Authorized Redirect URIs")
     return google.authorize_redirect(redirect_uri)
 
 
