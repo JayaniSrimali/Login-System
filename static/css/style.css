@@ -218,7 +218,7 @@ h6 {
     border-radius: var(--radius-lg);
     overflow: hidden;
     box-shadow: var(--shadow-xl);
-    min-height: 700px;
+    min-height: 650px;
 }
 
 .auth-split-horizontal {
@@ -1040,7 +1040,9 @@ h6 {
     .section-title {
         font-size: 2rem;
     }
-}/* Terms Checkbox */
+}
+
+/* Terms Checkbox */
 .terms-checkbox {
     display: flex;
     align-items: center;
@@ -1067,4 +1069,106 @@ h6 {
 
 .terms-checkbox label:hover {
     color: var(--white);
+}
+
+/* ====================================
+   Forgot Password Custom Styles
+   ==================================== */
+.forgot-password-split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    /* Image slightly wider */
+    max-width: 1200px;
+    width: 100%;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+    min-height: 650px;
+}
+
+.forgot-password-left {
+    background: url('../Images/Forgot_Password.jpg') no-repeat center center;
+    background-size: cover;
+    position: relative;
+}
+
+.forgot-password-right {
+    padding: 60px 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: #151515;
+    color: var(--white);
+}
+
+.forgot-password-right .auth-form-container {
+    width: 100%;
+    max-width: 400px;
+}
+
+.forgot-password-right .auth-title {
+    text-align: center;
+    color: var(--white);
+    margin-bottom: 24px;
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.forgot-password-right .auth-subtitle-small {
+    text-align: center;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 40px;
+    line-height: 1.6;
+    font-size: 0.95rem;
+}
+
+/* Specific pill shapes for this page */
+.forgot-password-right .form-input {
+    width: 100%;
+    padding: 12px 12px 12px 52px;
+    border: none;
+    border-radius: 12px;
+    background: #F0EDFF;
+    color: #1A1A1A;
+    font-size: 0.95rem;
+    font-family: var(--font-body);
+    transition: all var(--transition-base);
+    outline: none;
+    font-weight: 500;
+}
+
+
+.forgot-password-right .input-icon {
+    color: #1A1A1A;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.forgot-password-right .btn-primary {
+    border-radius: 8px;
+    /* Pill shape */
+    width: 100%;
+    margin-top: 10px;
+    background: #0E3F23;
+    /* Dark green */
+    padding: 14px;
+    font-size: 1rem;
+
+}
+
+.forgot-password-right .btn-primary:hover {
+    background: #1A5D44;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .forgot-password-split {
+        grid-template-columns: 1fr;
+    }
+
+    .forgot-password-left {
+        display: none;
+    }
 }
