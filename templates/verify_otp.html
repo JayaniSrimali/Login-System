@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+
+{% block title %}Verify OTP - GreenNest{% endblock %}
+
+{% block content %}
+<div class="auth-container verify-otp-page">
+    <div class="auth-split-horizontal">
+        <div class="auth-image-left">
+            <img src="https://images.unsplash.com/photo-1509937528035-ad76254b0356?w=800&q=80" alt="Indoor plant"
+                class="auth-image">
+        </div>
+
+        <div class="auth-right-compact">
+            <div class="auth-form-container">
+                <h2 class="auth-title">Enter Verification Code</h2>
+                <p class="auth-subtitle-small">
+                    Please enter the 4-digit verification code below to confirm your identity and continue resetting
+                    your password.
+                </p>
+
+                <form method="POST" action="{{ url_for('verify_otp') }}" class="auth-form">
+                    {{ form.hidden_tag() }}
+
+                    <div class="otp-input-group">
+                        {{ form.otp_digit_1(class="otp-input", maxlength="1", autocomplete="off") }}
+                        {{ form.otp_digit_2(class="otp-input", maxlength="1", autocomplete="off") }}
+                        {{ form.otp_digit_3(class="otp-input", maxlength="1", autocomplete="off") }}
+                        {{ form.otp_digit_4(class="otp-input", maxlength="1", autocomplete="off") }}
+                    </div>
+
+                    {% if form.otp_digit_1.errors or form.otp_digit_2.errors or form.otp_digit_3.errors or
+                    form.otp_digit_4.errors %}
+                    <div class="field-errors text-center">
+                        <span class="error-text">Please enter a valid 4-digit code</span>
+                    </div>
+                    {% endif %}
+
+                    <button type="submit" class="btn btn-primary btn-full">Continue</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    // Auto-focus and auto-advance OTP inputs
+    document.addEventListener('DOMContentLoaded', function () {
+        const otpInputs = document.querySelectorAll('.otp-input');
+
+        otpInputs.forEach((input, index) => {
+            input.addEventListener('input', function (e) {
+                // Only allow numbers
+                this.value = this.value.replace(/[^0-9]/g, '');
+
+                // Move to next input if current is filled
+                if (this.value.length === 1 && index < otpInputs.length - 1) {
+                    otpInputs[index + 1].focus();
+                }
+            });
+
+            input.addEventListener('keydown', function (e) {
+                // Move to previous input on backspace if current is empty
+                if (e.key === 'Backspace' && this.value === '' && index > 0) {
+                    otpInputs[index - 1].focus();
+                }
+            });
+
+            // Auto-focus first input
+            if (index === 0) {
+                input.focus();
+            }
+        });
+    });
+</script>
+{% endblock %}
