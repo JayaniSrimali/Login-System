@@ -8,7 +8,12 @@ import random
 import os
 from dotenv import load_dotenv
 
+
 load_dotenv()
+
+# Allow OAuth using HTTP for local development
+if os.environ.get('FLASK_ENV') == 'development':
+    os.environ['OAUTHLIB_INSECURE_TRANSPORT'] = '1'
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', 'your-secret-key-change-this-in-production')
@@ -26,6 +31,7 @@ db.init_app(app)
 # Initialize OAuth
 oauth = OAuth(app)
 
+
 # Register Google OAuth
 google = oauth.register(
     name='google',
@@ -33,9 +39,6 @@ google = oauth.register(
     client_secret=app.config.get('GOOGLE_CLIENT_SECRET'),
     server_metadata_url='https://accounts.google.com/.well-known/openid-configuration',
     client_kwargs={'scope': 'openid email profile'},
-    authorize_url='https://accounts.google.com/o/oauth2/v2/auth',
-    access_token_url='https://oauth2.googleapis.com/token',
-    userinfo_endpoint='https://openidconnect.googleapis.com/v1/userinfo',
 )
 
 # Register Facebook OAuth
@@ -139,6 +142,15 @@ def get_or_create_user_from_oauth(oauth_user_data, provider):
     return user
 
 
+
+@app.route('/')
+def index():
+    """Root URL - redirects to login or home"""
+    if current_user.is_authenticated:
+        return redirect(url_for('home'))
+    return redirect(url_for('login'))
+
+
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     """Login page"""
@@ -175,7 +187,9 @@ def auth_google():
         flash('Google OAuth is not configured. Please add GOOGLE_CLIENT_ID and GOOGLE_CLIENT_SECRET to environment variables.', 'error')
         return redirect(url_for('login'))
     
-    redirect_uri = url_for('auth_google_callback', _external=True)
+    # Force use of http://127.0.0.1:5000 for local dev to match Google Console default
+    redirect_uri = url_for('auth_google_callback', _external=True).replace('localhost', '127.0.0.1')
+    print(f"DEBUG: Using Redirect URI: {redirect_uri}")
     return google.authorize_redirect(redirect_uri)
 
 

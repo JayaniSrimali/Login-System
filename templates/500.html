@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block title %}Server Error - GreenNest{% endblock %}
+
+{% block content %}
+<div class="auth-container error-page">
+    <div class="auth-box">
+        <div class="auth-header">
+            <h2>500</h2>
+            <p>Something went wrong on our end.</p>
+        </div>
+
+        <div class="auth-footer">
+            <p>Go back to <a href="{{ url_for('home') }}">Home</a> or try again later.</p>
+        </div>
+    </div>
+</div>
+{% endblock %}

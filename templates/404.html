@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block title %}Page Not Found - GreenNest{% endblock %}
+
+{% block content %}
+<div class="auth-container error-page">
+    <div class="auth-box">
+        <div class="auth-header">
+            <h2>404</h2>
+            <p>Oops! The page you're looking for doesn't exist.</p>
+        </div>
+
+        <div class="auth-footer">
+            <p>Go back to <a href="{{ url_for('home') }}">Home</a></p>
+        </div>
+    </div>
+</div>
+{% endblock %}
