@@ -23,8 +23,6 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 # OAuth configuration
 app.config['GOOGLE_CLIENT_ID'] = os.environ.get('GOOGLE_CLIENT_ID')
 app.config['GOOGLE_CLIENT_SECRET'] = os.environ.get('GOOGLE_CLIENT_SECRET')
-app.config['FACEBOOK_APP_ID'] = os.environ.get('FACEBOOK_APP_ID')
-app.config['FACEBOOK_APP_SECRET'] = os.environ.get('FACEBOOK_APP_SECRET')
 
 db.init_app(app)
 
@@ -41,19 +39,7 @@ google = oauth.register(
     client_kwargs={'scope': 'openid email profile'},
 )
 
-# Register Facebook OAuth
-facebook = oauth.register(
-    name='facebook',
-    client_id=app.config.get('FACEBOOK_APP_ID'),
-    client_secret=app.config.get('FACEBOOK_APP_SECRET'),
-    access_token_url='https://graph.facebook.com/v18.0/oauth/access_token',
-    access_token_params=None,
-    authorize_url='https://www.facebook.com/v18.0/dialog/oauth',
-    authorize_params=None,
-    api_base_url='https://graph.facebook.com/v18.0/',
-    userinfo_endpoint='https://graph.facebook.com/me?fields=id,name,email,picture',
-    client_kwargs={'scope': 'email'},
-)
+
 
 # Flask-Login setup
 login_manager = LoginManager()
@@ -213,42 +199,7 @@ def auth_google_callback():
         return redirect(url_for('login'))
 
 
-@app.route('/auth/facebook')
-def auth_facebook():
-    """Initiate Facebook OAuth login"""
-    if not app.config.get('FACEBOOK_APP_ID') or not app.config.get('FACEBOOK_APP_SECRET'):
-        flash('Facebook OAuth is not configured. Please add FACEBOOK_APP_ID and FACEBOOK_APP_SECRET to environment variables.', 'error')
-        return redirect(url_for('login'))
-    
-    redirect_uri = url_for('auth_facebook_callback', _external=True)
-    return facebook.authorize_redirect(redirect_uri)
 
-
-@app.route('/auth/facebook/callback')
-def auth_facebook_callback():
-    """Facebook OAuth callback"""
-    try:
-        token = facebook.authorize_access_token()
-        
-        # Get user info from Facebook
-        resp = facebook.get('me?fields=id,name,email,picture.type(large)', 
-                           token=token)
-        user_info = resp.json()
-        
-        # Extract picture URL if available
-        if user_info.get('picture') and user_info['picture'].get('data'):
-            user_info['picture'] = user_info['picture']['data'].get('url')
-        
-        # Get or create user
-        user = get_or_create_user_from_oauth(user_info, 'facebook')
-        
-        login_user(user)
-        flash(f'Welcome {user.full_name}! Logged in with Facebook.', 'success')
-        return redirect(url_for('home'))
-    except Exception as e:
-        print(f"Facebook OAuth error: {e}")
-        flash('Failed to login with Facebook. Please try again.', 'error')
-        return redirect(url_for('login'))
 
 
 
