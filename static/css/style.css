@@ -202,19 +202,25 @@ h6 {
     display: flex;
     align-items: center;
     justify-content: center;
-    background:
-        url('../Images/Backgrounds.jpg') no-repeat center center;
+    background: white;
     background-size: cover;
     padding: 40px 20px;
+}
+
+.auth-bg-image {
+    background-image: url('../Images/Backgrounds.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 .auth-split {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    max-width: 1400px;
+    max-width: 1200px;
     width: 100%;
-    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4));
-    border-radius: var(--radius-lg);
+    background: linear-gradient(90deg, rgba(20, 12, 12, 0) 0%, #140C0C 53%);
+    border-radius: 5px;
     overflow: hidden;
     box-shadow: var(--shadow-xl);
     min-height: 650px;
@@ -234,7 +240,7 @@ h6 {
 
 /* Auth Left Side */
 .auth-left {
-    background: linear-gradient(90deg, #1A1818 0%, rgba(20, 12, 12, 0.53) 100%);
+    background: transparent;
     background-size: cover;
     background-position: center;
     padding: 30px;
@@ -254,7 +260,7 @@ h6 {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: #151515;
+    background: transparent;
     /* Matching the dark background from the image */
 }
 
